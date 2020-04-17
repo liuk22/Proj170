@@ -14,18 +14,37 @@ def solve(G):
     """
 
     # TODO: your code here!
-    pass
+    MST = nx.algorithms.minimum_spanning_tree(G)
+    ct = 1
+    while (ct != 0):
+        ct = 0
+        MST_leaves = [x for x in G.nodes() if G.degree(x) == 1]
+        for leaf in MST_leaves:
+            if can_remove_leaf(leaf, MST):
+                MST.remove_node(leaf)
+                ct += 1
+    return MST
 
 
-# Here's an example of how to run your solver.
+def can_remove_leaf(leaf, MST):
+    for leaf_neighbor in MST.neighbors(leaf):
+        # leaf_neighbor must have at least one neighbor that's in MST that is not leaf
+        current_leaf_neighbor_OK = False
+        for leaf_neighbor_neighbor in MST.neighbors(leaf_neighbor):
+            if MST.contains(leaf_neighbor_neighbor) and leaf_neighbor_neighbor != leaf:
+                current_leaf_neighbor_OK = True
+        if not current_leaf_neighbor_OK:
+            return False
+    return True
 
 # Usage: python3 solver.py test.in
 
-# if __name__ == '__main__':
-#     assert len(sys.argv) == 2
-#     path = sys.argv[1]
-#     G = read_input_file(path)
-#     T = solve(G)
-#     assert is_valid_network(G, T)
-#     print("Average  pairwise distance: {}".format(average_pairwise_distance(T)))
-#     write_output_file(T, 'out/test.out')
+if __name__ == '__main__':
+    assert len(sys.argv) == 3
+    path = sys.argv[1]
+    max_size = int(sys.argv[2])
+    G = read_input_file(path, max_size)
+    T = solve(G)
+    assert is_valid_network(G, T)
+    print("Average  pairwise distance: {}".format(average_pairwise_distance(T)))
+    write_output_file(T, 'out/test{0}.out'.format(max_size))
