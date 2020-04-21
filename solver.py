@@ -16,19 +16,20 @@ def solve(G):
 
     # TODO: your code here!
     MST = nx.algorithms.minimum_spanning_tree(G)
+    Gcopy = G.copy()
     ct = 1
     while (ct != 0):
         ct = 0
-        MST_leaves = [x for x in G.nodes() if G.degree(x) == 1]
+        MST_leaves = [x for x in Gcopy.nodes() if Gcopy.degree(x) == 1]
         for leaf in MST_leaves:
-            if can_remove_leaf(leaf, MST):
+            if can_remove_leaf(leaf, MST, G):
                 MST.remove_node(leaf)
-                G.remove_node(leaf)
+                Gcopy.remove_node(leaf)
                 ct += 1
     return MST
 
 
-def can_remove_leaf(leaf, MST):
+def can_remove_leaf(leaf, MST, G):
     for leaf_neighbor in G.neighbors(leaf):
         # leaf_neighbor must have at least one neighbor that's in MST that is not leaf
         current_leaf_neighbor_OK = False
