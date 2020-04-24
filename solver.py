@@ -1,5 +1,6 @@
 import networkx as nx
 import networkx.algorithms.approximation as naa
+from naa import steinertree
 from parse import read_input_file, write_output_file
 from utils import is_valid_network, average_pairwise_distance
 import sys
@@ -66,7 +67,7 @@ def DS_solution(G):
         sol = nx.Graph()
         sol.add_node(Domset.pop())
         return sol
-    return naa.steinertree.steiner_tree(G, list(Domset))
+    return steinertree.steiner_tree(G, list(Domset))
 
 
 def MST_solution(G, MST=None):
