@@ -25,7 +25,7 @@ def solve(G):
     else:
         best_sol = sol2
     best_sol_copy = best_sol.copy()
-    for _ in range(100):
+    for _ in range(1000):
         edge_to_add = ()
         for u in best_sol_copy.nodes():
             for v in G.neighbors(u):
@@ -100,8 +100,8 @@ def MST_solution(G, MST=None):
 # Usage: python3 solver.py test.in
 
 if __name__ == '__main__':
-    for file in os.listdir('./inputs'):
-        G = read_input_file('./inputs/' + file, 100)
+    for file in os.listdir('./inputs3'):
+        G = read_input_file('./inputs3/' + file, 100)
         T = solve(G)
 #        assert False
         assert is_valid_network(G, T)
