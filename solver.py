@@ -24,7 +24,7 @@ def solve(G):
     else:
         best_sol = sol2
     best_sol_copy = best_sol.copy()
-    for _ in range(1000):
+    for _ in range(100):
         edge_to_add = ()
         for u in best_sol_copy.nodes():
             for v in G.neighbors(u):
