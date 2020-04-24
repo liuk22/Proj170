@@ -47,7 +47,8 @@ def replace_edge(sol, edge):
     prob = 0.2
     sol_copy = sol.copy()
     sol_copy.add_edge(*edge)
-    sol_copy = MST_solution(sol_copy)
+    sol_copy = MST_solution(G, sol_copy)
+    assert is_valid_network(G, sol_copy), "after"
     apd_copy = average_pairwise_distance(sol_copy)
     apd_og = average_pairwise_distance(sol)
     if apd_copy < apd_og:
@@ -68,7 +69,7 @@ def DS_solution(G):
     return naa.steinertree.steiner_tree(G, list(Domset))
 
 
-def MST_solution(G):
+def MST_solution(G, MST=None):
     def can_remove_leaf(leaf, MST, G):
         for leaf_neighbor in G.neighbors(leaf):
             # leaf_neighbor must have at least one neighbor that's in MST that is not leaf
@@ -80,12 +81,13 @@ def MST_solution(G):
                 return False
         return True
 
-    MST = nx.algorithms.minimum_spanning_tree(G)
+    if not MST:
+        MST = nx.algorithms.minimum_spanning_tree(G)
     Gcopy = G.copy()
     ct = 1
     while (ct != 0):
         ct = 0
-        MST_leaves = [x for x in Gcopy.nodes() if Gcopy.degree(x) == 1]
+        MST_leaves = [x for x in MST.nodes() if MST.degree(x) == 1]
         for leaf in MST_leaves:
             if can_remove_leaf(leaf, MST, G):
                 MST.remove_node(leaf)
