@@ -100,8 +100,9 @@ def MST_solution(G, MST=None):
 # Usage: python3 solver.py test.in
 
 if __name__ == '__main__':
-    for file in os.listdir('./inputs1'):
-        G = read_input_file('./inputs1/' + file, 100)
+
+    for file in os.listdir('./inputs'):
+        G = read_input_file('./inputs/' + file, 100)
         T = solve(G)
 #        assert False
         assert is_valid_network(G, T)
