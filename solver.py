@@ -1,6 +1,6 @@
 import networkx as nx
 import networkx.algorithms.approximation as naa
-from naa import steinertree
+from networkx.algorithms.approximation import steinertree
 from parse import read_input_file, write_output_file
 from utils import is_valid_network, average_pairwise_distance
 import sys
