@@ -1,0 +1,11 @@
+Description of different parameters of the alg and the results.
+
+Baseline solution4 (p = 0.2, heuristic = degree(v) - weight(e))
+Avg cost: 67.99464823721601
+
+Enhanced Baseline: Baseline solution4 + finding a smaller dominating set (multiple iterations of networkx function)
+Avg cost:
+
+p = 0.2, heuristic = 2 * degree(v) - weight(e)
+Avg cost: 
+
