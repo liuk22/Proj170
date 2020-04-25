@@ -22,8 +22,10 @@ def solve(G):
     best_sol = None
     if average_pairwise_distance(sol1) < average_pairwise_distance(sol2):
         best_sol = sol1
+        print('DS_solution used')
     else:
         best_sol = sol2
+        print('MST_solution used')
     best_sol_copy = best_sol.copy()
     for _ in range(1000):
         edge_to_add = ()
@@ -31,7 +33,7 @@ def solve(G):
             for v in G.neighbors(u):
                 if not best_sol_copy.has_node(v):
                     e = (u, v)
-                    heuristic = G.degree(u) - G[u][v]['weight']
+                    heuristic = 1.5 * G.degree(u) - G[u][v]['weight']
                     if edge_to_add is ():
                         edge_to_add = (e, heuristic)
                     else:
@@ -45,7 +47,7 @@ def solve(G):
 
 
 def replace_edge(sol, edge):
-    prob = 0.2
+    prob = 0.01
     sol_copy = sol.copy()
     sol_copy.add_edge(*edge)
     sol_copy = MST_solution(G, sol_copy)
@@ -107,7 +109,7 @@ if __name__ == '__main__':
 #        assert False
         assert is_valid_network(G, T)
         costs.append(average_pairwise_distance(T))
-        print("Average  pairwise distance: {}".format(average_pairwise_distance(T)))
+        print("Average  pairwise distance: {0} for file {1}".format(average_pairwise_distance(T), file))
         write_output_file(T, 'outputs_sample/{0}.out'.format(file[:-3]))
 
     print('average cost: ' + str(sum(costs)/len(costs)))
