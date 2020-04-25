@@ -100,11 +100,14 @@ def MST_solution(G, MST=None):
 # Usage: python3 solver.py test.in
 
 if __name__ == '__main__':
-
-    for file in os.listdir('./inputs'):
-        G = read_input_file('./inputs/' + file, 100)
+    costs = []
+    for file in os.listdir('./inputs_sample'):
+        G = read_input_file('./inputs_sample/' + file, 100)
         T = solve(G)
 #        assert False
         assert is_valid_network(G, T)
+        costs.append(average_pairwise_distance(T))
         print("Average  pairwise distance: {}".format(average_pairwise_distance(T)))
-        write_output_file(T, 'outputs/{0}.out'.format(file[:-3]))
+        write_output_file(T, 'outputs_sample/{0}.out'.format(file[:-3]))
+
+    print('average cost: ' + str(sum(costs)/len(costs)))
