@@ -1,0 +1,22 @@
+Description of different parameters of the alg and the results.
+
+Baseline solution4 (p = 0.2, heuristic = degree(v) - weight(e))
+Avg cost: 67.99464823721601
+
+p = 0.2, heuristic = 2 * degree(v) - weight(e)
+Avg cost: 68.06427894636452
+
+p = 0.2, heuristic = 1.5 * degree(v) - weight(e)
+Avg cost: 67.99039714548898
+
+p = 0.2, heuristic = 1.2 * degree(v) - weight(e)
+Avg cost: 67.99300299912076
+
+p = 0.3, heuristic = 1.5 * degree(v) - weight(e)
+Avg cost: 67.98836398222367
+
+p = 0.1, heuristic = 1.5 * degree(v) - weight(e)
+Avg cost: 67.98836398222367 
+
+p = 0.01, heuristic = 1.5 * degree(v) - weight(e)
+Avg cost: 67.98836398222367
