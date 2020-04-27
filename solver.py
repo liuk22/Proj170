@@ -86,6 +86,7 @@ def MST_solution(G, MST=None):
 
     if not MST:
         MST = nx.algorithms.minimum_spanning_tree(G)
+        print("Averate pairwise distance of original MST: {0}".format(average_pairwise_distance(MST)))
     Gcopy = G.copy()
     ct = 1
     while (ct != 0):
@@ -93,23 +94,35 @@ def MST_solution(G, MST=None):
         MST_leaves = [x for x in MST.nodes() if MST.degree(x) == 1]
         for leaf in MST_leaves:
             if can_remove_leaf(leaf, MST, G):
+                pre_remove = MST.copy()
                 MST.remove_node(leaf)
-                Gcopy.remove_node(leaf)
-                ct += 1
+                if average_pairwise_distance(MST) < average_pairwise_distance(pre_remove) or random.random() < 0.1:
+                    Gcopy.remove_node(leaf)
+                    ct += 1
+                else:
+                    MST = pre_remove
     return MST
 
 
 # Usage: python3 solver.py test.in
 
 if __name__ == '__main__':
-    costs = []
+#    costs = []
+#    file = 'small-111.in'
+#    G = read_input_file('./inputs2/' + file, 100)
+#    T = solve(G)
+#        #        assert False
+#    assert is_valid_network(G, T)
+#    costs.append(average_pairwise_distance(T))
+#    print("Average  pairwise distance: {0} for file {1}".format(average_pairwise_distance(T), file))
+#    write_output_file(T, 'outputs_sample/{0}.out'.format(file[:-3]))
+
     for file in os.listdir('./inputs_sample'):
         G = read_input_file('./inputs_sample/' + file, 100)
         T = solve(G)
-#        assert False
         assert is_valid_network(G, T)
-        costs.append(average_pairwise_distance(T))
+#        costs.append(average_pairwise_distance(T))
         print("Average  pairwise distance: {0} for file {1}".format(average_pairwise_distance(T), file))
         write_output_file(T, 'outputs_sample/{0}.out'.format(file[:-3]))
 
-    print('average cost: ' + str(sum(costs)/len(costs)))
+#print('average cost: ' + str(sum(costs)/len(costs)))
