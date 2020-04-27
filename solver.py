@@ -22,10 +22,10 @@ def solve(G):
     best_sol = None
     if average_pairwise_distance(sol1) < average_pairwise_distance(sol2):
         best_sol = sol1
-        print('DS_solution used')
+        #print('DS_solution used')
     else:
         best_sol = sol2
-        print('MST_solution used')
+        #print('MST_solution used')
     best_sol_copy = best_sol.copy()
     for _ in range(1000):
         edge_to_add = ()
@@ -86,7 +86,7 @@ def MST_solution(G, MST=None):
 
     if not MST:
         MST = nx.algorithms.minimum_spanning_tree(G)
-        print("Averate pairwise distance of original MST: {0}".format(average_pairwise_distance(MST)))
+        #print("Averate pairwise distance of original MST: {0}".format(average_pairwise_distance(MST)))
     Gcopy = G.copy()
     ct = 1
     while (ct != 0):
@@ -117,12 +117,12 @@ if __name__ == '__main__':
 #    print("Average  pairwise distance: {0} for file {1}".format(average_pairwise_distance(T), file))
 #    write_output_file(T, 'outputs_sample/{0}.out'.format(file[:-3]))
 
-    for file in os.listdir('./inputs_sample'):
-        G = read_input_file('./inputs_sample/' + file, 100)
+    for file in os.listdir('./inputs1/'):
+        G = read_input_file('./inputs1/' + file, 100)
         T = solve(G)
         assert is_valid_network(G, T)
 #        costs.append(average_pairwise_distance(T))
         print("Average  pairwise distance: {0} for file {1}".format(average_pairwise_distance(T), file))
-        write_output_file(T, 'outputs_sample/{0}.out'.format(file[:-3]))
+        write_output_file(T, 'outputs/{0}.out'.format(file[:-3]))
 
 #print('average cost: ' + str(sum(costs)/len(costs)))
