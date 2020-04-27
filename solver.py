@@ -47,7 +47,7 @@ def solve(G):
 
 
 def replace_edge(sol, edge):
-    prob = 0.01
+    prob = 0.2
     sol_copy = sol.copy()
     sol_copy.add_edge(*edge)
     sol_copy = MST_solution(G, sol_copy)
