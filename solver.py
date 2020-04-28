@@ -107,8 +107,8 @@ def MST_solution(G, MST=None):
 
 if __name__ == '__main__':
 #    costs = []
-    file = 'large-3.in'
-    G = read_input_file('./inputs1/' + file, 100)
+    file = 'large-135.in'
+    G = read_input_file('./inputs2/' + file, 100)
     T = solve(G)
     assert is_valid_network(G, T)
 #    costs.append(average_pairwise_distance(T))
