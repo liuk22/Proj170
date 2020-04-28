@@ -22,17 +22,10 @@ def solve(G):
     best_sol = None
     if average_pairwise_distance(sol1) < average_pairwise_distance(sol2):
         best_sol = sol1
-<<<<<<< HEAD
-    #        print('DS_solution used')
+#        print('DS_solution used')
     else:
         best_sol = sol2
 #        print('MST_solution used')
-=======
-        #print('DS_solution used')
-    else:
-        best_sol = sol2
-        #print('MST_solution used')
->>>>>>> 37cde2cd7ad619370e692519d786199ae3333484
     best_sol_copy = best_sol.copy()
     for _ in range(1000):
         edge_to_add = ()
@@ -93,11 +86,6 @@ def MST_solution(G, MST=None):
 
     if not MST:
         MST = nx.algorithms.minimum_spanning_tree(G)
-<<<<<<< HEAD
-    #print("Averate pairwise distance of original MST: {0}".format(average_pairwise_distance(MST)))
-=======
-        #print("Averate pairwise distance of original MST: {0}".format(average_pairwise_distance(MST)))
->>>>>>> 37cde2cd7ad619370e692519d786199ae3333484
     Gcopy = G.copy()
     ct = 1
     while (ct != 0):
@@ -119,18 +107,17 @@ def MST_solution(G, MST=None):
 
 if __name__ == '__main__':
 #    costs = []
-#    file = 'small-111.in'
-#    G = read_input_file('./inputs2/' + file, 100)
-#    T = solve(G)
-#        #        assert False
-#    assert is_valid_network(G, T)
+    file = 'large-3.in'
+    G = read_input_file('./inputs1/' + file, 100)
+    T = solve(G)
+    assert is_valid_network(G, T)
 #    costs.append(average_pairwise_distance(T))
-#    print("Average  pairwise distance: {0} for file {1}".format(average_pairwise_distance(T), file))
-#    write_output_file(T, 'outputs_sample/{0}.out'.format(file[:-3]))
+    print("Average  pairwise distance: {0} for file {1}".format(average_pairwise_distance(T), file))
+    write_output_file(T, 'outputs/{0}.out'.format(file[:-3]))
 
-    for file in os.listdir('./inputs'):
-        print(file)
-        G = read_input_file('./inputs/' + file, 100)
+    exit(0)
+    for file in os.listdir('./inputs1'):
+        G = read_input_file('./inputs1/' + file, 100)
         T = solve(G)
         assert is_valid_network(G, T)
 #        costs.append(average_pairwise_distance(T))
