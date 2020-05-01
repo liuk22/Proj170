@@ -110,21 +110,21 @@ def avg_edge_weight(G):
 
 if __name__ == '__main__':
     # costs = []
-    file = 'small-228.in'
-    G = read_input_file('./inputs/' + file, 100)
-    T = solve(G)
-    assert is_valid_network(G, T)
+    # file = 'small-228.in'
+    # G = read_input_file('./inputs/' + file, 100)
+    # T = solve(G)
+    # assert is_valid_network(G, T)
     # costs.append(average_pairwise_distance(T))
-    print("Average  pairwise distance: {0} for file {1}".format(average_pairwise_distance(T), file))
-    write_output_file(T, 'outputs_sample/{0}.out'.format(file[:-3]))
+    # print("Average  pairwise distance: {0} for file {1}".format(average_pairwise_distance(T), file))
+    # write_output_file(T, 'outputs_sample/{0}.out'.format(file[:-3]))
 
-    exit(0)
+    # exit(0)
     for file in os.listdir('./inputs_sample'):
         G = read_input_file('./inputs_sample/' + file, 100)
         T = solve(G)
         assert is_valid_network(G, T)
-        costs.append(average_pairwise_distance(T))
+        # costs.append(average_pairwise_distance(T))
         print("Average  pairwise distance: {0} for file {1}".format(average_pairwise_distance(T), file))
-        write_output_file(T, 'outputs_sample/{0}.out'.format(file[:-3]))
+        write_output_file(T, 'outputs/{0}.out'.format(file[:-3]))
 
-    print('average cost: ' + str(sum(costs)/len(costs)))
+    # print('average cost: ' + str(sum(costs)/len(costs)))
