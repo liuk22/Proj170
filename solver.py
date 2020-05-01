@@ -22,10 +22,10 @@ def solve(G):
     best_sol = None
     if average_pairwise_distance(sol1) < average_pairwise_distance(sol2):
         best_sol = sol1
-        print('DS_solution used')
+        # print('DS_solution used')
     else:
         best_sol = sol2
-        print('MST_solution used')
+        # print('MST_solution used')
     best_sol_copy = best_sol.copy()
     for _ in range(1000):
         edge_to_add = ()
@@ -119,8 +119,8 @@ if __name__ == '__main__':
     # write_output_file(T, 'outputs_sample/{0}.out'.format(file[:-3]))
 
     # exit(0)
-    for file in os.listdir('./inputs_sample'):
-        G = read_input_file('./inputs_sample/' + file, 100)
+    for file in os.listdir('./inputs-cindy'):
+        G = read_input_file('./inputs-cindy/' + file, 100)
         T = solve(G)
         assert is_valid_network(G, T)
         # costs.append(average_pairwise_distance(T))
