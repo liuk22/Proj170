@@ -109,7 +109,7 @@ def avg_edge_weight(G):
 # Usage: python3 solver.py test.in
 
 if __name__ == '__main__':
-    # costs = []
+    costs = []
     # file = 'small-228.in'
     # G = read_input_file('./inputs/' + file, 100)
     # T = solve(G)
@@ -119,11 +119,12 @@ if __name__ == '__main__':
     # write_output_file(T, 'outputs_sample/{0}.out'.format(file[:-3]))
 
     # exit(0)
+
     for file in os.listdir('./inputs-cindy'):
         G = read_input_file('./inputs-cindy/' + file, 100)
         T = solve(G)
         assert is_valid_network(G, T)
-        # costs.append(average_pairwise_distance(T))
+        costs.append(average_pairwise_distance(T))
         print("Average  pairwise distance: {0} for file {1}".format(average_pairwise_distance(T), file))
         write_output_file(T, 'outputs/{0}.out'.format(file[:-3]))
 
