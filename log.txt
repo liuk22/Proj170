@@ -30,3 +30,6 @@ Avg cost: 80.87275561521986
 
 p_replace_edge = 0.2, p_remove_edge = 0.1, heuristic = 10 * degree(v) - weight(e)
 Avg cost: 80.84995303343953
+
+p_replace_edge = 0.2, p_remove_edge = 0.1, heuristic = avg_weight * degree(v) - weight(e)
+Avg cost: 79.89152198775065
