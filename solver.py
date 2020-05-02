@@ -22,10 +22,10 @@ def solve(G):
     best_sol = None
     if average_pairwise_distance(sol1) < average_pairwise_distance(sol2):
         best_sol = sol1
-        print('DS_solution used')
+        # print('DS_solution used')
     else:
         best_sol = sol2
-        print('MST_solution used')
+        # print('MST_solution used')
     best_sol_copy = best_sol.copy()
     for _ in range(1000):
         edge_to_add = ()
@@ -109,7 +109,7 @@ def avg_edge_weight(G):
 # Usage: python3 solver.py test.in
 
 if __name__ == '__main__':
-    # costs = []
+    costs = []
     # file = 'small-228.in'
     # G = read_input_file('./inputs/' + file, 100)
     # T = solve(G)
@@ -123,7 +123,7 @@ if __name__ == '__main__':
         G = read_input_file('./inputs-olivia/' + file, 100)
         T = solve(G)
         assert is_valid_network(G, T)
-        # costs.append(average_pairwise_distance(T))
+        costs.append(average_pairwise_distance(T))
         print("Average  pairwise distance: {0} for file {1}".format(average_pairwise_distance(T), file))
         write_output_file(T, 'outputs/{0}.out'.format(file[:-3]))
 
