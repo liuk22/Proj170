@@ -119,8 +119,8 @@ if __name__ == '__main__':
     # write_output_file(T, 'outputs_sample/{0}.out'.format(file[:-3]))
 
     # exit(0)
-    for file in os.listdir('./inputs_sample'):
-        G = read_input_file('./inputs_sample/' + file, 100)
+    for file in os.listdir('./inputs-olivia'):
+        G = read_input_file('./inputs-olivia/' + file, 100)
         T = solve(G)
         assert is_valid_network(G, T)
         # costs.append(average_pairwise_distance(T))
