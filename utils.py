@@ -12,8 +12,13 @@ def is_valid_network(G, T):
     Returns:
         bool: whether T is a valid network
     """
-
-    return nx.is_tree(T) and nx.is_dominating_set(G, T.nodes)
+    if not nx.is_tree(T):
+        print("Not a tree.")
+        return False
+    elif not nx.is_dominating_set(G, T.nodes):
+        print("Not a dominating set.")
+        return False
+    return True
 
 
 def average_pairwise_distance(T):
